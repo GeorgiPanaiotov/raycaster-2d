@@ -8,6 +8,9 @@ mod wall;
 const WIDTH: u32 = 800;
 const HEIGHT: u32 = 800;
 
+const MIN_RANGE: f32 = -400.0;
+const MAX_RANGE: f32 = 400.0;
+
 fn main() {
     nannou::app(model)
         .size(WIDTH, HEIGHT)
@@ -25,8 +28,14 @@ fn model(_app: &App) -> Model {
     let mut walls: Vec<Wall> = vec![];
     for _i in 0..10 {
         let wall = Wall::new(
-            vec2(random_range(-400.0, 400.0), random_range(-400.0, 400.0)),
-            vec2(random_range(-400.0, 400.0), random_range(-400.0, 400.0)),
+            vec2(
+                random_range(MIN_RANGE, MAX_RANGE),
+                random_range(MIN_RANGE, MAX_RANGE),
+            ),
+            vec2(
+                random_range(MIN_RANGE, MAX_RANGE),
+                random_range(MIN_RANGE, MAX_RANGE),
+            ),
         );
         walls.push(wall);
     }
